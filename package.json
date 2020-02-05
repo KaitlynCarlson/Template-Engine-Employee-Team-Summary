@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/KaitlynCarlson/Template-Engine-Employee-Team-Summary/issues"
   },
-  "homepage": "https://github.com/KaitlynCarlson/Template-Engine-Employee-Team-Summary#readme"
+  "homepage": "https://github.com/KaitlynCarlson/Template-Engine-Employee-Team-Summary#readme",
+  "dependencies": {
+    "inquirer": "^7.0.4",
+    "jest": "^25.1.0"
+  }
 }
