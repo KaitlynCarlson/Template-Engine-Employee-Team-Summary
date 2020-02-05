@@ -1,10 +1,12 @@
 "use strict";
 
-const Employee = require("../lib/employee");
+const test = require("jest");
+const Employee = require("../lib/employee").default;
 
 test("Can instantiate Employee instance", () => {
   const employee = new Employee();
-  expect(typeof e).toBe("object");
+  // I changed e to employee because I think it was a typo
+  expect(typeof employee).toBe("object");
 });
 
 test("Can set name via constructor arguments", () => {
