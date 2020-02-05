@@ -1,0 +1,23 @@
+{
+  "name": "template-engine-employee-team-summary",
+  "version": "1.0.0",
+  "description": "A CLI that generates profiles for engineer teams. ",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaitlynCarlson/Template-Engine-Employee-Team-Summary.git"
+  },
+  "author": "Kaitlyn Carlson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaitlynCarlson/Template-Engine-Employee-Team-Summary/issues"
+  },
+  "homepage": "https://github.com/KaitlynCarlson/Template-Engine-Employee-Team-Summary#readme"
+}
