@@ -1,7 +1,7 @@
 "use strict";
 
-const test = require("jest");
-const Employee = require("../lib/employee").default;
+// const test = require("jest");
+const Employee = require("../lib/employee");
 
 test("Can instantiate Employee instance", () => {
   const employee = new Employee();
