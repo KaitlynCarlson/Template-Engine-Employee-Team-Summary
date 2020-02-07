@@ -17,7 +17,7 @@ async function initialBuild() {
   }
   addEmployee();
 }
-async function addEmployee(groundTeam) {
+async function addEmployee() {
   try {
     const buildEmployee = await inquirer.prompt(addEmployeeQuestions);
     console.log(buildEmployee);
