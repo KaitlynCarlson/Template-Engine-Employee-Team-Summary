@@ -1,0 +1,8 @@
+[
+  {
+    "type": "list",
+    "name": "newemployee",
+    "message": "Would you like to add an employee to the team? ",
+    "choices": ["Engineer", "Intern", "Team complete"]
+  }
+]
