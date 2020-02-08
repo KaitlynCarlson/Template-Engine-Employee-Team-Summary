@@ -1,22 +1,22 @@
 [
   {
     "type": "input",
-    "name": "intername",
+    "name": "name",
     "message": "Please enter intern's name"
   },
   {
     "type": "input",
-    "name": "internemail",
+    "name": "email",
     "message": "Please enter intern's email"
   },
   {
     "type": "input",
-    "name": "internschool",
+    "name": "school",
     "message": "Please enter intern's school"
   },
   {
     "type": "input",
-    "name": "employeeid",
+    "name": "id",
     "message": "Please enter interns id"
   }
 ]

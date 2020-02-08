@@ -6,22 +6,22 @@
   },
   {
     "type": "input",
-    "name": "managername",
+    "name": "name",
     "message": "Please enter manager's name"
   },
   {
     "type": "input",
-    "name": "manageremail",
+    "name": "email",
     "message": "Please enter manager's email"
   },
   {
     "type": "input",
-    "name": "managerid",
+    "name": "id",
     "message": "Please enter manager's id"
   },
   {
     "type": "input",
-    "name": "manageroffice",
+    "name": "office",
     "message": "Please enter manager's office number"
   }
 ]
