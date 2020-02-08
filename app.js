@@ -32,7 +32,7 @@ async function initialBuild() {
         groundTeam.office
       )
     );
-    initialHTML();
+    initialHTML(theTeam.teamname);
   } catch (err) {
     console.log(err);
   }
