@@ -1,5 +1,4 @@
 "use strict";
-const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
@@ -8,35 +7,24 @@ const questions = require("./allQuestions/questions");
 const internQuestions = require("./allQuestions/intern-questions");
 const engineerQuestions = require("./allQuestions/engineer-questions");
 const addEmployeeQuestions = require("./allQuestions/add-employee");
+const managerQuestions = require("./allQuestions/manager-questions");
 const fs = require("fs");
+// const github = require("octonode");
+// const client = github.client();
 const theTeam = [];
 
 // initialBuild prompts the initial questions and pushes them to into the theTeam obj
 // and finally it calls addEmployee() to start building Employees
+
 async function initialBuild() {
   try {
-    const groundTeam = await inquirer.prompt(questions);
-    theTeam.push(
-      new Manager(
-        groundTeam.name,
-        groundTeam.email,
-        groundTeam.id,
-        groundTeam.office
-      )
-    );
-    createEmployeeCard(
-      new Manager(
-        groundTeam.name,
-        groundTeam.email,
-        groundTeam.id,
-        groundTeam.office
-      )
-    );
-    initialHTML(theTeam.teamname);
+    const naming = await inquirer.prompt(questions);
+    theTeam.push(naming);
+    initialHTML();
   } catch (err) {
     console.log(err);
   }
-  addEmployee();
+  addManager();
 }
 // addEmployee prompts users if they would like to add another employee
 // then it goes on to act upon the user's response appropriately
@@ -108,8 +96,31 @@ async function addEngineer() {
   }
   addEmployee();
 }
-
-function initialHTML(theTeam) {
+async function addManager() {
+  try {
+    const groundTeam = await inquirer.prompt(managerQuestions);
+    theTeam.push(
+      new Manager(
+        groundTeam.name,
+        groundTeam.email,
+        groundTeam.id,
+        groundTeam.office
+      )
+    );
+    createEmployeeCard(
+      new Manager(
+        groundTeam.name,
+        groundTeam.email,
+        groundTeam.id,
+        groundTeam.office
+      )
+    );
+  } catch (err) {
+    console.log(err);
+  }
+  addEmployee();
+}
+function initialHTML() {
   const frame = `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -137,7 +148,7 @@ function initialHTML(theTeam) {
             height="100px"
             width="100px"
           />
-          <h1>Team ${theTeam.teamname}</h1>
+          <h1 id="displayTeamName">Team Builder</h1>
         </div>
   
         <div id="displayteam" class="container-fluid">
@@ -155,6 +166,7 @@ const createEmployeeCard = card => {
   const role = card.getRole();
   const id = card.getId();
   const email = card.getEmail();
+
   let employeeCardStyled = "";
   return new Promise((resolve, reject) => {
     if (role === "Intern") {
@@ -172,8 +184,8 @@ const createEmployeeCard = card => {
       <li class="list-group-item">
         <i class="fas fa-building fa-2x"></i>${email}
       </li>
-      <li class="list-group-item fa-2x">
-        <i class="fas fa-id-badge"></i>${school}
+      <li class="list-group-item ">
+        <i class="fas fa-id-badge fa-2x"></i>${school}
       </li>
     </ul>
     </div>`;
@@ -192,8 +204,8 @@ const createEmployeeCard = card => {
       <li class="list-group-item">
         <i class="fas fa-building fa-2x"></i>${email}
       </li>
-      <li class="list-group-item fa-2x">
-        <i class="fas fa-id-badge"></i>${gitUser}
+      <li class="list-group-item ">
+        <i class="fas fa-id-badge fa-2x"></i><a href="https://github.com/${gitUser}">${gitUser}</a>
       </li>
     </ul>
     </div>`;
@@ -212,8 +224,8 @@ const createEmployeeCard = card => {
       <li class="list-group-item">
         <i class="fas fa-building fa-2x"></i>${email}
       </li>
-      <li class="list-group-item fa-2x">
-        <i class="fas fa-id-badge"></i>${office}
+      <li class="list-group-item">
+        <i class="fas fa-id-badge fa-2x"></i>${office}
       </li>
     </ul>
     </div>`;
@@ -248,6 +260,18 @@ const closeTags = () => {
     .employeecard {
       border: 1px solid lightgrey;
       margin: 3%;
+    }
+    .fas,
+    .fab {
+      margin: 10px;
+    }
+    .card-title,
+    .card-subtitle {
+      margin: 20px;
+    }
+    .card-subtitle {
+      border-bottom: 1px solid lightgray;
+      padding-bottom: 10px;
     }
   </style>
 </body>

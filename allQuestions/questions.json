@@ -1,27 +1,7 @@
 [
   {
     "type": "input",
-    "name": "teamname",
+    "name": "unique",
     "message": "Please name your team"
-  },
-  {
-    "type": "input",
-    "name": "name",
-    "message": "Please enter manager's name"
-  },
-  {
-    "type": "input",
-    "name": "email",
-    "message": "Please enter manager's email"
-  },
-  {
-    "type": "input",
-    "name": "id",
-    "message": "Please enter manager's id"
-  },
-  {
-    "type": "input",
-    "name": "office",
-    "message": "Please enter manager's office number"
   }
 ]
