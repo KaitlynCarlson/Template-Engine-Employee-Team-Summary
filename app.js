@@ -273,6 +273,12 @@ const closeTags = () => {
       border-bottom: 1px solid lightgray;
       padding-bottom: 10px;
     }
+    .employeecard{
+      opacity:0.7;
+    }
+    .employeecard:hover{
+      opacity:1;
+    }
   </style>
 </body>
 </html>`;

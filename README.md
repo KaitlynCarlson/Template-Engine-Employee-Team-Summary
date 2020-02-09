@@ -2,10 +2,8 @@
 
 A command line application that generates software engineering team profiles.
 
-## Psuedocode
+## Purpose
 
-![Class Hierarchy](IMGs/ClassHierarchy.png)
+The purpose of TEETS is to create an efficient method for users to generate team profiles that contain relevant data and references for engineering team members; although targeted at engineers, this application can certainly be relevant to a myriad of edge case users.
 
-## Understanding the Tests
-
-## Building the Code around the Tests
+## User Story
