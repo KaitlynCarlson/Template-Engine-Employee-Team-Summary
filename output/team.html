@@ -85,6 +85,11 @@
         </ul>
       </div>
     </div>
+    <script>
+      $(".employeecard").on("hover", function() {
+        $(".employeecard").this("background-color", "red");
+      });
+    </script>
     <style>
       #team {
         display: flex;
@@ -104,6 +109,7 @@
       .employeecard {
         border: 1px solid lightgrey;
         margin: 3%;
+        opacity: 0.9;
       }
       .fas,
       .fab {
@@ -116,9 +122,6 @@
       .card-subtitle {
         border-bottom: 1px solid lightgray;
         padding-bottom: 10px;
-      }
-      .employeecard {
-        opacity: 0.7;
       }
       .employeecard:hover {
         opacity: 1;

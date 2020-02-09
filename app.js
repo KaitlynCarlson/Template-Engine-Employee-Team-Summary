@@ -274,7 +274,7 @@ const closeTags = () => {
       padding-bottom: 10px;
     }
     .employeecard{
-      opacity:0.7;
+      opacity:0.9;
     }
     .employeecard:hover{
       opacity:1;
