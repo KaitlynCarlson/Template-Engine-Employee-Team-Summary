@@ -20,7 +20,7 @@ async function initialBuild() {
   try {
     const naming = await inquirer.prompt(questions);
     theTeam.push(naming);
-    initialHTML();
+    initialHTML(naming);
   } catch (err) {
     console.log(err);
   }
@@ -120,7 +120,7 @@ async function addManager() {
   }
   addEmployee();
 }
-function initialHTML() {
+function initialHTML(naming) {
   const frame = `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -148,7 +148,7 @@ function initialHTML() {
             height="100px"
             width="100px"
           />
-          <h1 id="displayTeamName">Team Builder</h1>
+          <h1 id="displayTeamName">${naming.unique}</h1>
         </div>
   
         <div id="displayteam" class="container-fluid">
@@ -179,10 +179,10 @@ const createEmployeeCard = card => {
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <i class="fab fa-mailchimp fa-2x"></i>${id}
+        <i class="fab fa-mailchimp fa-2x"></i>${email}
       </li>
       <li class="list-group-item">
-        <i class="fas fa-building fa-2x"></i>${email}
+        <i class="fas fa-building fa-2x"></i>${id}
       </li>
       <li class="list-group-item ">
         <i class="fas fa-id-badge fa-2x"></i>${school}
@@ -199,13 +199,13 @@ const createEmployeeCard = card => {
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <i class="fab fa-mailchimp fa-2x"></i>${id}
+        <i class="fab fa-mailchimp fa-2x"></i>${email}
       </li>
       <li class="list-group-item">
-        <i class="fas fa-building fa-2x"></i>${email}
+        <i class="fas fa-building fa-2x"></i>${id}
       </li>
       <li class="list-group-item ">
-        <i class="fas fa-id-badge fa-2x"></i><a href="https://github.com/${gitUser}">${gitUser}</a>
+        <i class="fas fa-id-badge fa-2x"></i><a href="https://github.com/${gitUser.trim()}">${gitUser}</a>
       </li>
     </ul>
     </div>`;
