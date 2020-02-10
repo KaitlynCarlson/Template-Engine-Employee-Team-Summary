@@ -22,7 +22,7 @@
   "homepage": "https://github.com/KaitlynCarlson/Template-Engine-Employee-Team-Summary#readme",
   "dependencies": {
     "inquirer": "^7.0.4",
-    "jest": "^25.1.0",
-    "octonode": "^0.9.5"
-  }
+    "jest": "^25.1.0"
+  },
+  "devDependencies": {}
 }

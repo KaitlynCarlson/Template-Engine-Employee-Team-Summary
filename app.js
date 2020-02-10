@@ -228,6 +228,7 @@ const createEmployeeCard = card => {
       </ul>
       </div>`;
     } else if (role === "Engineer") {
+      const gitName = card.getGithubName();
       const gitUser = card.getGithub();
       employeeCardStyled = `          
         <div class="employeecard" class="card" style="width: 18rem;"> 
@@ -240,7 +241,7 @@ const createEmployeeCard = card => {
           <i class="fab fa-mailchimp fa-2x"></i>${email}
         </li>
         <li class="list-group-item">
-          <i class="fab fa-github fa-2x"></i><a href="https://github.com/${gitUser.trim()}">${gitUser}</a>
+          <i class="fab fa-github fa-2x"></i><a href="${gitUser}">${gitName}</a>
         </li>
         <li class="list-group-item ">
           <i class="fas fa-id-badge fa-2x"></i>Employee ID: ${id}
