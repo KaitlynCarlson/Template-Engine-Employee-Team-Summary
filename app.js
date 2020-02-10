@@ -318,6 +318,14 @@ const closeTags = () => {
       .employeecard:hover{
         opacity:1;
       }
+      #head {
+        background-color: #233240;
+        color: white;
+        padding: 10px;
+      }
+      .card-subtitle {
+        color: white !important;
+      }
     </style>
   </body>
   </html>`;
