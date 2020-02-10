@@ -55,3 +55,7 @@ $ npm app.js        // Run the application
 
 ![No Team Name](./IMGs/teamnamerequired.png)
 ![Employee Missing Data](./IMGs/Missedfields.png)
+
+## Rendering team page locally as `team.html`
+
+![View Team](./IMGs/renderedteam.png)
