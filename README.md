@@ -43,4 +43,15 @@ $ npm app.js        // Run the application
 
 **Example Input Session**
 
-## I attempted to pull my template out but could not successfully export it without breaking the code
+![Full Team Build](./IMGs/exampleFullInteraction.png)
+
+**Class Hierarchy Testing**
+
+3. Node package jest is used in order to run tests on the class hierarchy to ensure proper functionality of both class values and methods.
+
+**Validation**
+
+4. During the CLI team building interaction, user responses are validated for an input. If the user enters an empty input field they are alerted, and prompted appropriately to ensure each question receives an answer.
+
+![No Team Name](./IMGs/teamnamerequired.png)
+![Employee Missing Data](./IMGs/Missedfields.png)
