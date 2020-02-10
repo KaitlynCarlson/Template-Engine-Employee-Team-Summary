@@ -1,131 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/d7576195fc.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-
-    <title>Team Profile</title>
-  </head>
-  <body>
-    <div id="team" class="container-fluid">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Management_Hierarchy_Flat_Icon.svg/1024px-Management_Hierarchy_Flat_Icon.svg.png"
-        height="100px"
-        width="100px"
-      />
-      <h1 id="displayTeamName">Wombat Wonks</h1>
-    </div>
-
-    <div id="displayteam" class="container-fluid">
-      <div class="employeecard" class="card" style="width: 18rem;">
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+          />
+          <script
+            src="https://kit.fontawesome.com/d7576195fc.js"
+            crossorigin="anonymous"
+          ></script>
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  
+      
+          <title>Team Profile</title>
+        </head>
+        <body>
+          <div id="team" class="container-fluid">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Management_Hierarchy_Flat_Icon.svg/1024px-Management_Hierarchy_Flat_Icon.svg.png"
+              height="100px"
+              width="100px"
+            />
+            <h1 id="displayTeamName">vf</h1>
+          </div>
+    
+          <div id="displayteam" class="container-fluid">
+  
+      
+        <div class="employeecard" class="card" style="width: 18rem;"> 
         <div id="head">
-          <h5 class="card-title">Matt</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <i class="fab fa-mailchimp fa-2x"></i>matt@matt
-          </li>
-          <li class="list-group-item">
-            <i class="fas fa-building fa-2x"></i>1
-          </li>
-          <li class="list-group-item">
-            <i class="fas fa-id-badge fa-2x"></i>12
-          </li>
-        </ul>
+        <h5 class="card-title">v</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
       </div>
-      <div class="employeecard" class="card" style="width: 18rem;">
-        <div id="head">
-          <h5 class="card-title">asf</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <i class="fab fa-mailchimp fa-2x"></i>rfd
-          </li>
-          <li class="list-group-item">
-            <i class="fas fa-building fa-2x"></i>sbf
-          </li>
-          <li class="list-group-item ">
-            <i class="fas fa-id-badge fa-2x"></i
-            ><a href="https://github.com/f">f</a>
-          </li>
-        </ul>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <i class="fab fa-mailchimp fa-2x"></i>v
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-building fa-2x"></i>Office Number: v
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-id-badge fa-2x"></i>Employee ID: v 
+        </li>
+      </ul>
       </div>
-      <div class="employeecard" class="card" style="width: 18rem;">
-        <div id="head">
-          <h5 class="card-title">dvf</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Intern</h6>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <i class="fab fa-mailchimp fa-2x"></i>@
-          </li>
-          <li class="list-group-item">
-            <i class="fas fa-building fa-2x"></i>dvf
-          </li>
-          <li class="list-group-item ">
-            <i class="fas fa-id-badge fa-2x"></i>td
-          </li>
-        </ul>
-      </div>
-    </div>
-    <script>
-      $(".employeecard").on("hover", function() {
-        $(".employeecard").this("background-color", "red");
-      });
-    </script>
-    <style>
-      #team {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        background-color: #233240;
-        color: white;
-        width: 100%;
-        padding: 20px;
-        font-size: 3em;
-      }
-      #displayteam {
-        display: flex;
-        justify-content: center;
-        flex-flow: row wrap;
-      }
-      .employeecard {
-        border: 1px solid lightgrey;
-        margin: 3%;
-        opacity: 0.9;
-      }
-      .fas,
-      .fab {
-        margin: 10px;
-      }
-      .card-title,
-      .card-subtitle {
-        margin: 20px;
-      }
-      .card-subtitle {
-        border-bottom: 1px solid lightgray;
-        padding-bottom: 10px;
-      }
-      .employeecard:hover {
-        opacity: 1;
-      }
-    </style>
-  </body>
-</html>

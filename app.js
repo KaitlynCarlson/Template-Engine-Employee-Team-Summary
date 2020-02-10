@@ -9,8 +9,6 @@ const engineerQuestions = require("./allQuestions/engineer-questions");
 const addEmployeeQuestions = require("./allQuestions/add-employee");
 const managerQuestions = require("./allQuestions/manager-questions");
 const fs = require("fs");
-// const github = require("octonode");
-// const client = github.client();
 const theTeam = [];
 
 // initialBuild prompts the initial questions and pushes them to into the theTeam obj
@@ -19,8 +17,15 @@ const theTeam = [];
 async function initialBuild() {
   try {
     const naming = await inquirer.prompt(questions);
-    theTeam.push(naming);
-    initialHTML(naming);
+    if (naming.unique === "") {
+      console.log(
+        "Don't be a sore sport! Show your team pride with a team name!"
+      );
+      return initialBuild();
+    } else {
+      theTeam.push(naming);
+      initialHTML(naming);
+    }
   } catch (err) {
     console.log(err);
   }
@@ -31,7 +36,6 @@ async function initialBuild() {
 async function addEmployee() {
   try {
     const buildEmployee = await inquirer.prompt(addEmployeeQuestions);
-    // console.log(buildEmployee);
     if (buildEmployee.newemployee === "Engineer") {
       addEngineer();
     } else if (buildEmployee.newemployee === "Intern") {
@@ -49,23 +53,33 @@ async function addEmployee() {
 async function addIntern() {
   try {
     const newIntern = await inquirer.prompt(internQuestions);
-    console.log(newIntern);
-    theTeam.push(
-      new Intern(
-        newIntern.name,
-        newIntern.id,
-        newIntern.email,
-        newIntern.school
-      )
-    );
-    createEmployeeCard(
-      new Intern(
-        newIntern.name,
-        newIntern.id,
-        newIntern.email,
-        newIntern.school
-      )
-    );
+    if (
+      newIntern.name === "" ||
+      newIntern.id === "" ||
+      newIntern.email === "" ||
+      newIntern.school === ""
+    ) {
+      console.log(
+        `---------------------------- \n It looks like you missed some spots, lets try again \n---------------------------- `
+      );
+    } else {
+      theTeam.push(
+        new Intern(
+          newIntern.name,
+          newIntern.id,
+          newIntern.email,
+          newIntern.school
+        )
+      );
+      createEmployeeCard(
+        new Intern(
+          newIntern.name,
+          newIntern.id,
+          newIntern.email,
+          newIntern.school
+        )
+      );
+    }
   } catch (err) {
     console.log(err);
   }
@@ -74,23 +88,33 @@ async function addIntern() {
 async function addEngineer() {
   try {
     const newEngineer = await inquirer.prompt(engineerQuestions);
-    // console.log(newEngineer);
-    theTeam.push(
-      new Engineer(
-        newEngineer.name,
-        newEngineer.id,
-        newEngineer.email,
-        newEngineer.github
-      )
-    );
-    createEmployeeCard(
-      new Engineer(
-        newEngineer.name,
-        newEngineer.id,
-        newEngineer.email,
-        newEngineer.github
-      )
-    );
+    if (
+      newEngineer.name === "" ||
+      newEngineer.id === "" ||
+      newEngineer.email === "" ||
+      newEngineer.github === ""
+    ) {
+      console.log(
+        `---------------------------- \n It looks like you missed some spots, lets try again \n---------------------------- `
+      );
+    } else {
+      theTeam.push(
+        new Engineer(
+          newEngineer.name,
+          newEngineer.id,
+          newEngineer.email,
+          newEngineer.github
+        )
+      );
+      createEmployeeCard(
+        new Engineer(
+          newEngineer.name,
+          newEngineer.id,
+          newEngineer.email,
+          newEngineer.github
+        )
+      );
+    }
   } catch (err) {
     console.log(err);
   }
@@ -99,61 +123,75 @@ async function addEngineer() {
 async function addManager() {
   try {
     const groundTeam = await inquirer.prompt(managerQuestions);
-    theTeam.push(
-      new Manager(
-        groundTeam.name,
-        groundTeam.email,
-        groundTeam.id,
-        groundTeam.office
-      )
-    );
-    createEmployeeCard(
-      new Manager(
-        groundTeam.name,
-        groundTeam.email,
-        groundTeam.id,
-        groundTeam.office
-      )
-    );
+    if (
+      groundTeam.name === "" ||
+      groundTeam.email === "" ||
+      groundTeam.id === "" ||
+      groundTeam.office === ""
+    ) {
+      console.log(
+        `---------------------------- \n It looks like you missed some spots, lets try again \n---------------------------- `
+      );
+      return addManager();
+    } else {
+      theTeam.push(
+        new Manager(
+          groundTeam.name,
+          groundTeam.email,
+          groundTeam.id,
+          groundTeam.office
+        )
+      );
+      createEmployeeCard(
+        new Manager(
+          groundTeam.name,
+          groundTeam.email,
+          groundTeam.id,
+          groundTeam.office
+        )
+      );
+    }
   } catch (err) {
     console.log(err);
   }
   addEmployee();
 }
+
+// HTML Flow of Creation
 function initialHTML(naming) {
   const frame = `<!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous"
-        />
-        <script
-          src="https://kit.fontawesome.com/d7576195fc.js"
-          crossorigin="anonymous"
-        ></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-    
-        <title>Team Profile</title>
-      </head>
-      <body>
-        <div id="team" class="container-fluid">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Management_Hierarchy_Flat_Icon.svg/1024px-Management_Hierarchy_Flat_Icon.svg.png"
-            height="100px"
-            width="100px"
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
           />
-          <h1 id="displayTeamName">${naming.unique}</h1>
-        </div>
+          <script
+            src="https://kit.fontawesome.com/d7576195fc.js"
+            crossorigin="anonymous"
+          ></script>
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   
-        <div id="displayteam" class="container-fluid">
-
-    `;
+      
+          <title>Team Profile</title>
+        </head>
+        <body>
+          <div id="team" class="container-fluid">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Management_Hierarchy_Flat_Icon.svg/1024px-Management_Hierarchy_Flat_Icon.svg.png"
+              height="100px"
+              width="100px"
+            />
+            <h1 id="displayTeamName">${naming.unique}</h1>
+          </div>
+    
+          <div id="displayteam" class="container-fluid">
+  
+      `;
   fs.writeFile("./output/team.html", frame, function(err) {
     if (err) {
       console.error(err);
@@ -172,63 +210,63 @@ const createEmployeeCard = card => {
     if (role === "Intern") {
       const school = card.getSchool();
       employeeCardStyled = `         
-       <div class="employeecard" class="card" style="width: 18rem;"> 
-      <div id="head">
-      <h5 class="card-title">${name}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Intern</h6>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <i class="fab fa-mailchimp fa-2x"></i>${email}
-      </li>
-      <li class="list-group-item">
-        <i class="fas fa-building fa-2x"></i>${id}
-      </li>
-      <li class="list-group-item ">
-        <i class="fas fa-id-badge fa-2x"></i>${school}
-      </li>
-    </ul>
-    </div>`;
+         <div class="employeecard" class="card" style="width: 18rem;"> 
+        <div id="head">
+        <h5 class="card-title">${name}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Intern</h6>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <i class="fab fa-mailchimp fa-2x"></i>${email}
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-university fa-2x"></i>${school}
+        </li>
+        <li class="list-group-item ">
+          <i class="fas fa-id-badge fa-2x"></i>Employee ID: ${id}
+        </li>
+      </ul>
+      </div>`;
     } else if (role === "Engineer") {
       const gitUser = card.getGithub();
       employeeCardStyled = `          
-      <div class="employeecard" class="card" style="width: 18rem;"> 
-      <div id="head">
-      <h5 class="card-title">${name}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <i class="fab fa-mailchimp fa-2x"></i>${email}
-      </li>
-      <li class="list-group-item">
-        <i class="fas fa-building fa-2x"></i>${id}
-      </li>
-      <li class="list-group-item ">
-        <i class="fas fa-id-badge fa-2x"></i><a href="https://github.com/${gitUser.trim()}">${gitUser}</a>
-      </li>
-    </ul>
-    </div>`;
+        <div class="employeecard" class="card" style="width: 18rem;"> 
+        <div id="head">
+        <h5 class="card-title">${name}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <i class="fab fa-mailchimp fa-2x"></i>${email}
+        </li>
+        <li class="list-group-item">
+          <i class="fab fa-github fa-2x"></i><a href="https://github.com/${gitUser.trim()}">${gitUser}</a>
+        </li>
+        <li class="list-group-item ">
+          <i class="fas fa-id-badge fa-2x"></i>Employee ID: ${id}
+        </li>
+      </ul>
+      </div>`;
     } else if (role === "Manager") {
       const office = card.getOfficeNumber();
       employeeCardStyled = `
-      <div class="employeecard" class="card" style="width: 18rem;"> 
-      <div id="head">
-      <h5 class="card-title">${name}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <i class="fab fa-mailchimp fa-2x"></i>${id}
-      </li>
-      <li class="list-group-item">
-        <i class="fas fa-building fa-2x"></i>${email}
-      </li>
-      <li class="list-group-item">
-        <i class="fas fa-id-badge fa-2x"></i>${office}
-      </li>
-    </ul>
-    </div>`;
+        <div class="employeecard" class="card" style="width: 18rem;"> 
+        <div id="head">
+        <h5 class="card-title">${name}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <i class="fab fa-mailchimp fa-2x"></i>${id}
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-building fa-2x"></i>Office Number: ${office}
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-id-badge fa-2x"></i>Employee ID: ${email} 
+        </li>
+      </ul>
+      </div>`;
     }
     fs.appendFile("./output/team.html", employeeCardStyled, function(err) {
       if (err) {
@@ -240,53 +278,54 @@ const createEmployeeCard = card => {
 
 const closeTags = () => {
   const closingHTML = `
-  </div>
-  <style>
-    #team {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      background-color: #233240;
-      color: white;
-      width: 100%;
-      padding: 20px;
-      font-size: 3em;
-    }
-    #displayteam {
-      display: flex;
-      justify-content: center;
-      flex-flow: row wrap;
-    }
-    .employeecard {
-      border: 1px solid lightgrey;
-      margin: 3%;
-    }
-    .fas,
-    .fab {
-      margin: 10px;
-    }
-    .card-title,
-    .card-subtitle {
-      margin: 20px;
-    }
-    .card-subtitle {
-      border-bottom: 1px solid lightgray;
-      padding-bottom: 10px;
-    }
-    .employeecard{
-      opacity:0.9;
-    }
-    .employeecard:hover{
-      opacity:1;
-    }
-  </style>
-</body>
-</html>`;
+    </div>
+    <style>
+      #team {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: #233240;
+        color: white;
+        width: 100%;
+        padding: 20px;
+        font-size: 3em;
+      }
+      #displayteam {
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+      }
+      .employeecard {
+        border: 1px solid lightgrey;
+        margin: 3%;
+      }
+      .fas,
+      .fab {
+        margin: 10px;
+      }
+      .card-title,
+      .card-subtitle {
+        margin: 20px;
+      }
+      .card-subtitle {
+        border-bottom: 1px solid lightgray;
+        padding-bottom: 10px;
+      }
+      .employeecard{
+        opacity:0.9;
+      }
+      .employeecard:hover{
+        opacity:1;
+      }
+    </style>
+  </body>
+  </html>`;
   fs.appendFile("./output/team.html", closingHTML, function(err) {
     if (err) {
       console.error(err);
     }
   });
 };
+
 // launch chaos
 initialBuild();
